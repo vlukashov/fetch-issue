@@ -5,7 +5,7 @@ When fetching the `https://stepzen.stepzen.net/directives.graphql` from a NodeJS
 Issue verified with
 
 - NodeJS versions: `14.20.1`, `16.18.0`, `18.12.0`
-- `node-fetch` versions: `2.6.7`, `3.2.10`
+- `node-fetch` versions: `2.6.7`, `3.2.10` (also with `axios` `1.1.3`)
 
 ## Steps to reproduce
 
@@ -49,6 +49,7 @@ Issue verified with
 This looks like an incompatibility issue between the `stepzen.net` HTTP config and the NodeJS network stack - changing one of these components resolves the issue.
 
 - replace NodeJS with a browser: running the function `main()` from `index.js` in Chrome, Firefox or Safari works fine
+- replace NodeJS with [Deno](https://deno.land/): running `deno run --allow-net deno/index.ts` works fine
 - replace NodeJS with curl: running `./curl.sh` on macOS works fine
 - replace `stepzen.net`: run the same NodeJS scripts against another URL (e.g. `https://stepzen.com`) works fine
 
